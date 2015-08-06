@@ -61,15 +61,17 @@ Car.prototype.pickUp = function (name) {
   }
 };
 
-Car.prototype.dropOff = function  (name) {
-  if (this.state === "on") {
-    for (var i = 0; i < this.passengers.length; i++) {
-      if (name === this.passengers[i]) {
-        this.passengers.splice(this.passengers[i], 1);
-        console.log(this.passengers[i]);
-      }
-    }
+Car.prototype.dropOff = function (name) {
+  var index = this.passengers.indexOf(name);
+  if (this.state !== "on") {
+   console.log("Car is off.)");
   }
+  if (index != -1) {
+    this.passengers.splice(index, 1);
+  } else {
+    console.log("Not a passenger.");
+  }
+  console.log(this.passengers);
 };
 
 
