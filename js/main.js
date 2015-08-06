@@ -12,6 +12,7 @@ var Car = function (make, model, year, color) {
   this.color = color;
   this.previous_owners = [];
   this.current_owner = [];
+  this.passengers = [];
 };
 
 var truck = new Car("Toyota", "Tacoma", "1999", "White");
@@ -50,4 +51,32 @@ Car.prototype.park = function () {
     console.log("Sorry, the car is still on.");
   }
 };
+
+Car.prototype.pickUp = function (name) {
+  if (this.state === "on") {
+    this.passengers.push(name);
+    console.log("Driving to pickup " +name);
+  } else {
+    console.log("Car is off.");
+  }
+};
+
+Car.prototype.dropOff = function  (name) {
+  if (this.state === "on") {
+    for (var i = 0; i < this.passengers.length; i++) {
+      if (name === this.passengers[i]) {
+        this.passengers.splice(this.passengers[i], 1);
+        console.log(this.passengers[i]);
+      }
+    }
+  }
+};
+
+
+
+
+
+
+
+
 
