@@ -63,15 +63,15 @@ Car.prototype.pickUp = function (name) {
 
 Car.prototype.dropOff = function (name) {
   var index = this.passengers.indexOf(name);
-  if (this.state !== "on") {
-   console.log("Car is off.)");
+  if (this.state === "off") {
+   return "Car is off.";
   }
   if (index != -1) {
     this.passengers.splice(index, 1);
   } else {
     console.log("Not a passenger.");
   }
-  console.log(this.passengers);
+
 };
 
 
